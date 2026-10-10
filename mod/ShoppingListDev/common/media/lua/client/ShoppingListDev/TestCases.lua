@@ -9,6 +9,7 @@
 --            tooltip lines; carried amounts follow the inventory
 --   craft    crafting window on Base.CraftRope: our button, missing inputs
 --            become group entries with the recipe as source, no doubling
+--   demo     sets up a small scene and leaves it open for trying by hand
 --   tour     no checks worth the name: shows window, highlight, tooltip,
 --            dialogs, menus, options one after the other and takes a
 --            screenshot of each (Screenshots/ in the user folder)
@@ -24,7 +25,7 @@ ShoppingListDev = ShoppingListDev or {}
 local Seq = ShoppingListDev.TestSeq
 local Cases = {}
 
-Cases.NAMES = { context = true, window = true, highlight = true, craft = true, persist = true, all = true, tour = true, options = true }
+Cases.NAMES = { context = true, window = true, highlight = true, craft = true, persist = true, all = true, tour = true, options = true, demo = true }
 
 local NAILS = "Base.Nails"
 local HAMMER = "Base.Hammer"
@@ -485,6 +486,56 @@ local function shot(seq, scope, name)
     seq:add(Seq.wait(scope, 10))
 end
 
+-- A small scene to look at: listed items carried and on the floor, an open and
+-- a done entry, a note, both inventory windows pinned.
+local function demoSetup(s, T)
+    local data = list()
+    local inv = player():getInventory()
+    local now = getTimestamp()
+    Model().addSource(data, NAILS, { type = Model().CONTEXT_MENU, amount = 1 }, now)
+    Model().addSource(data, HAMMER, { type = Model().CONTEXT_MENU, amount = 1 }, now)
+    Model().addSource(data, PLANK, { type = Model().CONTEXT_MENU, amount = 1 }, now)
+    inv:AddItem(NAILS)
+    inv:AddItem(HAMMER)
+    inv:AddItem("Base.Pencil")
+    Model().setWanted(data, NAILS, inv:getCountTypeRecurse(NAILS) + 4, now)
+    Model().setNote(data, NAILS, NOTE .. " <RGB:1,0,0>not red")
+    Model().setHideDone(data, false)
+    ShoppingList.Store.changed(player())
+    -- A plank and nails on the floor, so the loot window has listed rows.
+    local square = player():getSquare()
+    square:AddWorldInventoryItem(PLANK, 0.5, 0.5, 0)
+    square:AddWorldInventoryItem(NAILS, 0.4, 0.4, 0)
+    square:AddWorldInventoryItem("Base.Pencil", 0.6, 0.6, 0)
+    local page, loot = getPlayerInventory(0), getPlayerLoot(0)
+    page:setVisible(true)
+    page:setPinned()
+    loot:setVisible(true)
+    loot:setPinned()
+    ISInventoryPage.renderDirty = true
+    s:check(Model().count(data) >= 3, T, "setup", Model().count(data) .. " entries")
+end
+
+-- The scene alone, for trying things by hand: the list window open and the
+-- crafting window on the rope recipe with its missing inputs on the list.
+local function addDemoSteps(seq, scope)
+    local T = "demo"
+    seq:add(Seq.action(scope, "setup", function(_, s)
+        demoSetup(s, T)
+        ShoppingList.Window.close(0)
+        ShoppingList.Window.toggle(0)
+        local recipe = getScriptManager():getCraftRecipe(ROPE)
+        ISEntityUI.OpenHandcraftWindow(player(), nil, "*", false, recipe)
+    end))
+    seq:add(Seq.wait(scope, 60))
+    seq:add(Seq.action(scope, "craft button", function(_, s)
+        local _, panel = recipePanel()
+        if s:check(panel ~= nil and panel.shoppingListButton ~= nil, T, "craft.panel", "crafting window with our button") then
+            ShoppingList.CraftButton.onClick(panel, panel.shoppingListButton)
+        end
+    end))
+end
+
 local function addTourSteps(seq, scope)
     local T = "tour"
     local tip = nil
@@ -499,31 +550,7 @@ local function addTourSteps(seq, scope)
         return w
     end
     seq:add(Seq.action(scope, "setup", function(_, s)
-        local data = list()
-        local inv = player():getInventory()
-        local now = getTimestamp()
-        Model().addSource(data, NAILS, { type = Model().CONTEXT_MENU, amount = 1 }, now)
-        Model().addSource(data, HAMMER, { type = Model().CONTEXT_MENU, amount = 1 }, now)
-        Model().addSource(data, PLANK, { type = Model().CONTEXT_MENU, amount = 1 }, now)
-        inv:AddItem(NAILS)
-        inv:AddItem(HAMMER)
-        inv:AddItem("Base.Pencil")
-        Model().setWanted(data, NAILS, inv:getCountTypeRecurse(NAILS) + 4, now)
-        Model().setNote(data, NAILS, NOTE .. " <RGB:1,0,0>not red")
-        Model().setHideDone(data, false)
-        ShoppingList.Store.changed(player())
-        -- A plank and nails on the floor, so the loot window has listed rows.
-        local square = player():getSquare()
-        square:AddWorldInventoryItem(PLANK, 0.5, 0.5, 0)
-        square:AddWorldInventoryItem(NAILS, 0.4, 0.4, 0)
-        square:AddWorldInventoryItem("Base.Pencil", 0.6, 0.6, 0)
-        local page, loot = getPlayerInventory(0), getPlayerLoot(0)
-        page:setVisible(true)
-        page:setPinned()
-        loot:setVisible(true)
-        loot:setPinned()
-        ISInventoryPage.renderDirty = true
-        s:check(Model().count(data) >= 3, T, "setup", Model().count(data) .. " entries")
+        demoSetup(s, T)
     end))
     shot(seq, scope, "01-inventory-loot")
     seq:add(Seq.action(scope, "tooltip", function(_, s)
@@ -740,6 +767,9 @@ function Cases.build(name)
     end
     if name == "craft" or name == "all" then
         addCraftSteps(seq, { test = name })
+    end
+    if name == "demo" then
+        addDemoSteps(seq, { test = name })
     end
     if name == "tour" then
         addTourSteps(seq, { test = name })

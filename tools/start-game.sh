@@ -77,7 +77,7 @@ case "${1:-}" in
         TEST_NAME="${2:-}"
         # Same list as Cases.NAMES in ShoppingListDev/TestCases.lua.
         case "$TEST_NAME" in
-            context|window|highlight|craft|tour|options|all) ;;
+            context|window|highlight|craft|tour|options|demo|all) ;;
             persist)
                 MODE=resume
                 if [[ ! -s "$DEV/latestSave.ini" ]]; then
@@ -85,7 +85,7 @@ case "${1:-}" in
                     exit 1
                 fi ;;
             *)
-                echo "Usage: $0 --test context|window|highlight|craft|tour|options|persist|all" >&2
+                echo "Usage: $0 --test context|window|highlight|craft|tour|options|demo|persist|all" >&2
                 exit 1 ;;
         esac ;;
     --menu)
