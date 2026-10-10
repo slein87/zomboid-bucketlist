@@ -1,0 +1,7 @@
+{
+    "UI_Bucketlist_Options_Title": "Bucketlist",
+    "UI_Bucketlist_Options_Hotkey": "Bucketlist öffnen",
+    "UI_Bucketlist_Options_Hotkey_Tooltip": "Öffnet und schließt das Bucketlist-Fenster.",
+    "UI_Bucketlist_Options_Color": "Farbe der Hervorhebung",
+    "UI_Bucketlist_Options_Color_Tooltip": "Farbe des Rahmens um gelistete Items in Inventar- und Beutefenster."
+}

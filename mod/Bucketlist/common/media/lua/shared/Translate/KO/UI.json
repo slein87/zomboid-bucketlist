@@ -1,0 +1,7 @@
+{
+    "UI_Bucketlist_Options_Title": "Bucketlist",
+    "UI_Bucketlist_Options_Hotkey": "Bucketlist 열기",
+    "UI_Bucketlist_Options_Hotkey_Tooltip": "Bucketlist 창을 열고 닫습니다.",
+    "UI_Bucketlist_Options_Color": "강조 색",
+    "UI_Bucketlist_Options_Color_Tooltip": "소지품 창과 전리품 창에서 목록에 있는 아이템을 둘러싸는 테두리의 색입니다."
+}

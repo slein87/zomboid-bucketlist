@@ -1,0 +1,5 @@
+name=Bucketlist: Dev Start
+id=BucketlistDev
+description=Development helper for Bucketlist. In debug mode it skips the main menu, starts a fresh test world and on request runs the in-game test script. Not part of the mod.
+require=\Bucketlist
+versionMin=42.21
