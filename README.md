@@ -4,6 +4,8 @@ A wishlist for Project Zomboid (Build 42.21 and later): put items on your charac
 right-click, see what you carry and what you still need, and never leave the important stuff behind
 while looting.
 
+Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3817246291
+
 ## Features
 
 - **Right-click** an item in the inventory, loot, hotbar or hand slots: "Add to Bucketlist", or

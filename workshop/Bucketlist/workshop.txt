@@ -21,9 +21,12 @@ description=[h2]Multiplayer[/h2]
 description=No server code, but the server must list the mod in Mods= and WorkshopItems=, and everybody needs the same version. Not tested in multiplayer yet.
 description=
 description=[h2]Languages[/h2]
-description=English and German are written by hand. French, Spanish, Brazilian Portuguese, Italian, Polish, Russian, Ukrainian, Turkish, Chinese (Simplified and Traditional), Japanese and Korean are machine translated and use the game's own terms. Corrections are welcome in the discussion "Translations".
+description=English and German are written by hand. French, Spanish, Brazilian Portuguese, Italian, Polish, Russian, Ukrainian, Turkish, Chinese (Simplified and Traditional), Japanese and Korean are machine translated and use the game's own terms. Corrections are welcome in the discussion "Translations" or on GitHub.
+description=
+description=[h2]Source[/h2]
+description=https://github.com/slein87/zomboid-bucketlist (MIT license)
 description=
 description=[h2]How it was made[/h2]
 description=Built with AI assistance (Claude Code). Every game API call is checked against the installed game, and the mod is tested in game by the author.
 tags=Build 42;Interface;QoL
-visibility=unlisted
+visibility=public
