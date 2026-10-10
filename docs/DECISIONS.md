@@ -70,12 +70,12 @@ is available. Ingredients counted in uses get a wanted amount of 1 item.
 **D10. Deleting in the window.** A second click confirms. `ISModalDialog` is not an option: when it
 closes it sets the game speed to 1 and thereby ends a pause.
 
-**D11. Hotkey.** The default key is Ö on a German keyboard (chosen by the author on 2026-10-08), which
-is `Keyboard.KEY_SEMICOLON` with code 39 in the game. The game identifies keys by their US layout
-position: the key binding menu shows ";", and on other keyboards it is whichever key sits in that
-position. Vanilla uses the letter keys, F7 to F9 and 9/0 were taken by hotbar slots in the author's
-setup, and B opens the crafting window. The semicolon position is free. The key can be rebound in the
-mod options (page "Bucketlist", PZAPI.ModOptions); key 0 means unbound.
+**D11. Hotkey.** The default key is K (`Keyboard.KEY_K`, code 37). It is the only letter that the
+game's default key bindings (`media/lua/shared/keyBinding.lua`) leave free, so the mod overrides
+nothing, and it sits in the same place on QWERTY, QWERTZ and AZERTY keyboards. Until 2026-10-10 the
+default was the key right of L (`KEY_SEMICOLON`), which only suited a German keyboard. Players who
+already saved their mod options keep the key they had. The key can be rebound in the mod options
+(page "Bucketlist", PZAPI.ModOptions); key 0 means unbound.
 
 **D12. Controller.** No separate controller access in v1, it was not part of the original scope. The
 context menu also works with a controller.

@@ -42,7 +42,7 @@ Taken in game 42.21.0. The mod ships English and German texts.
 | What | How |
 |---|---|
 | Add or remove an item | right-click the item |
-| Open or close the window | sidebar button, or the key right of L on a German keyboard (";" on a US keyboard); rebind it in Options, Mods, Bucketlist |
+| Open or close the window | sidebar button, or the key K; rebind it in Options, Mods, Bucketlist |
 | Close the window | X, ESC or the hotkey |
 | Change amount, edit note | buttons under the list, or right-click a row |
 | Missing recipe inputs | button in the crafting window and at workbenches |

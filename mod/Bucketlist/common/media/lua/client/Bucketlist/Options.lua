@@ -7,9 +7,9 @@ local Core = require "Bucketlist/Core"
 
 local Options = {}
 
--- Default key: the one right of L on a German keyboard (Oe). The game counts
--- keys by their US position, where this key is ";" (docs/DECISIONS.md D11).
-Options.DEFAULT_KEY = Keyboard.KEY_SEMICOLON
+-- Default key K: the only letter the game's default bindings leave free, and
+-- in the same place on QWERTY, QWERTZ and AZERTY (docs/DECISIONS.md D11).
+Options.DEFAULT_KEY = Keyboard.KEY_K
 
 -- Highlight colour: amber by default, apart from vanilla white (selection),
 -- red (cannot drop), cyan (controller) and the rarity colours of Item Rarity UI.

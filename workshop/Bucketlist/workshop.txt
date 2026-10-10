@@ -15,7 +15,7 @@ description=[*]The list belongs to your character and is saved with it.
 description=[/list]
 description=
 description=[h2]Controls[/h2]
-description=Hotkey: the key right of L on a German keyboard (";" on a US keyboard). Rebind it in Options, Mods, Bucketlist.
+description=Hotkey: K. Rebind it in Options, Mods, Bucketlist.
 description=
 description=[h2]Multiplayer[/h2]
 description=No server code, but the server must list the mod in Mods= and WorkshopItems=, and everybody needs the same version. Not tested in multiplayer yet.

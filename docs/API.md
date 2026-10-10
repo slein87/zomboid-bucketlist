@@ -141,7 +141,7 @@ game test still has to show the effect.
 | `onKeyRelease` | `media/lua/client/ISUI/Crafting/ISHandcraftWindow.lua:293` | `onKeyRelease(key)` | Client | Close on ESC and hotkey | verified |
 | `setWantKeyEvents` | `media/lua/client/ISUI/Crafting/ISHandcraftWindow.lua:386` | `setWantKeyEvents(true)` | Client | Window receives key events | verified |
 | `Keyboard.KEY_ESCAPE` | `media/lua/client/ISUI/Crafting/ISHandcraftWindow.lua:290` | Key code | Client | Detect ESC | verified |
-| `Keyboard.KEY_SEMICOLON` | `media/lua/shared/keyBinding.lua:13` | Key code 39 (constant in `org/lwjglx/input/Keyboard.class` of the game jar, spelled like `Keyboard.KEY_W` here) | Client | Default hotkey: the semicolon key, which is Ö on a German keyboard | verified |
+| `Keyboard.KEY_K` | `media/lua/client/erosion/debug/DebugDemoTime.lua:90` | Key code 37 (constant in `org/lwjglx/input/Keyboard.class` of the game jar); not bound in `media/lua/shared/keyBinding.lua` | Client | Default hotkey | verified |
 | `getPlayerScreenLeft` | `media/lua/client/ISUI/PlayerData/ISPlayerDataObject.lua:103` | `getPlayerScreenLeft/Top/Width/Height(playerNum)` (lines 103 to 106) | Client | Center the window in the player's screen area | verified |
 | `ISUIElement:addToUIManager` | `media/lua/client/ISUI/ISUIElement.lua:1365` | `addToUIManager()`, `removeFromUIManager()` line 1373 | Client | Show and hide the window | verified |
 | `ISUIElement:setVisible` | `media/lua/client/ISUI/ISUIElement.lua:657` | `setVisible(bool)`, `getIsVisible()` line 676 | Client | Visibility | verified |

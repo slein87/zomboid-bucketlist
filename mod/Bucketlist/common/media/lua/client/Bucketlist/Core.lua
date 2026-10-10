@@ -5,7 +5,7 @@ Bucketlist = Bucketlist or {}
 local Core = {}
 
 Core.MOD_ID = "Bucketlist"
-Core.VERSION = "1.0.0"
+Core.VERSION = "1.0.1"
 
 local PREFIX = "[Bucketlist] "
 local reported = {}
