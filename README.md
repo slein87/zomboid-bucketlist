@@ -1,14 +1,10 @@
 # Shopping List
 
-A wishlist for Project Zomboid (Build 42.21 and later): put items on your character's list with a
-right-click, see what you carry and what you still need, and never leave the important stuff behind
-while looting.
+A wishlist and loot tracker for Project Zomboid (Build 42.21 and later): put items on your
+character's list with a right-click, see them highlighted in loot and inventory, and add missing
+crafting ingredients with one click.
 
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3817246291
-
-Versions 1.0.x were published as "Bucketlist" (mod id `Bucketlist`). Since 1.1.0 the mod is called
-Shopping List with the mod id `ShoppingList`; a list saved by 1.0.x is taken over when the character
-is loaded.
 
 ## Features
 
