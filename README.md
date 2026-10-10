@@ -8,8 +8,7 @@ Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=381724629
 
 Versions 1.0.x were published as "Bucketlist" (mod id `Bucketlist`). Since 1.1.0 the mod is called
 Shopping List with the mod id `ShoppingList`; a list saved by 1.0.x is taken over when the character
-is loaded. The Workshop page already carries the new name, but its download is still 1.0.1 with the
-old mod id until the next update.
+is loaded.
 
 ## Features
 
@@ -33,7 +32,7 @@ old mod id until the next update.
 
 ## Screenshots
 
-Taken in game 42.21.0 with version 1.0.1, when the mod was still called Bucketlist.
+Taken in game 42.21.0 with version 1.1.0.
 
 | | |
 |---|---|
