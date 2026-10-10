@@ -13,6 +13,7 @@
 #                                       the save again and check everything survived
 #   tools/start-game.sh --test persist  latest test save (of an "all" run), then the
 #                                       persistence checks
+#   tools/start-game.sh --menu           main menu only, no test world
 #   tools/start-game.sh --log           follow the Bucketlist lines of the running game
 #   tools/start-game.sh --stop          end the dev game (and its headless display)
 #
@@ -87,6 +88,9 @@ case "${1:-}" in
                 echo "Usage: $0 --test context|window|highlight|craft|tour|options|persist|all" >&2
                 exit 1 ;;
         esac ;;
+    --menu)
+        # Stays in the main menu; a request file written beforehand is kept.
+        MODE=menu ;;
     --continue)
         MODE=continue
         if [[ ! -s "$DEV/latestSave.ini" ]]; then
@@ -166,6 +170,7 @@ case "$MODE" in
     continue) echo "continue" > "$DEV/Lua/BucketlistDev.txt" ;;
     resume)   echo "resume $TEST_NAME" > "$DEV/Lua/BucketlistDev.txt" ;;
     test)     echo "test $TEST_NAME" > "$DEV/Lua/BucketlistDev.txt" ;;
+    menu)     touch "$DEV/Lua/BucketlistDev.txt" ;;
     *)        : > "$DEV/Lua/BucketlistDev.txt" ;;
 esac
 

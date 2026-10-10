@@ -1,4 +1,5 @@
 version=1
+id=3817246291
 title=Bucketlist
 description=[h1]Bucketlist[/h1]
 description=A wishlist for items you do not want to leave behind while looting. Build 42.21 and later.
