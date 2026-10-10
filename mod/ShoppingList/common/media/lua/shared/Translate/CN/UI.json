@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "打开 Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "打开和关闭 Shopping List 窗口.",
+    "UI_ShoppingList_Options_Color": "高亮颜色",
+    "UI_ShoppingList_Options_Color_Tooltip": "物品栏和战利品窗口中, 清单内物品的边框颜色."
+}

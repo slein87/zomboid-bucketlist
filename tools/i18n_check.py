@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check the Bucketlist translation files before every game test.
+"""Check the ShoppingList translation files before every game test.
 
   python3 -I tools/i18n_check.py
 
@@ -11,13 +11,13 @@ Per file:  strict JSON object, string values only, no duplicate keys, UTF-8
            without BOM, LF line ends, no dashes or typographic look-alikes.
 Per key:   the prefix matches the file (IGUI_ in IG_UI.json, UI_ in UI.json,
            ContextMenu_ in ContextMenu.json, Tooltip_ in Tooltip.json) and is
-           followed by "Bucketlist_".
+           followed by "ShoppingList_".
 Languages: only the codes of docs/DECISIONS.md D13, EN is required, every
            language has exactly the keys of EN, the same placeholders as EN
            (%1 to %9, %% for a percent sign, no other %), no empty values,
            no language.json. Mod.json holds name and description only,
            without any % (it is never formatted).
-Lua:       every Bucketlist key used in the mod's Lua files exists in EN, a
+Lua:       every ShoppingList key used in the mod's Lua files exists in EN, a
            Text.get(...) call passes at least as many arguments as the text
            has placeholders, and Lua sources are pure ASCII (Kahlua garbles
            other characters, docs/API.md section 10).
@@ -29,7 +29,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-MOD = REPO / 'mod' / 'Bucketlist' / 'common'
+MOD = REPO / 'mod' / 'ShoppingList' / 'common'
 TRANSLATE = MOD / 'media' / 'lua' / 'shared' / 'Translate'
 LUA = MOD / 'media' / 'lua'
 
@@ -42,7 +42,7 @@ LOOKALIKES = {
     '“': 'left double quote', '”': 'right double quote', '﻿': 'BOM', ' ': 'no-break space',
 }
 PLACEHOLDER = re.compile(r'%(%|[1-9])')
-KEY_IN_LUA = re.compile(r'"((?:IGUI|UI|ContextMenu|Tooltip)_Bucketlist_[A-Za-z0-9_]+)"')
+KEY_IN_LUA = re.compile(r'"((?:IGUI|UI|ContextMenu|Tooltip)_ShoppingList_[A-Za-z0-9_]+)"')
 TEXT_CALL = re.compile(r'Text\.get\(\s*"([A-Za-z0-9_]+)"')
 
 errors = []
@@ -146,7 +146,7 @@ def check_languages():
                         error(where, '%s: no %% in Mod.json, it is shown unformatted' % key)
                 tables.setdefault(lang, {})[name] = data
                 continue
-            prefix = PREFIX[name] + 'Bucketlist_'
+            prefix = PREFIX[name] + 'ShoppingList_'
             for key, value in data.items():
                 if not key.startswith(prefix):
                     error(where, '%s: key must start with %s' % (key, prefix))

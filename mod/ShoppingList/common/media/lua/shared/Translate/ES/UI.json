@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Abrir Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Abre y cierra la ventana de la Shopping List.",
+    "UI_ShoppingList_Options_Color": "Color de resaltado",
+    "UI_ShoppingList_Options_Color_Tooltip": "Color del marco que rodea los objetos de la lista en las ventanas de inventario y de saqueo."
+}

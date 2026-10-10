@@ -1,4 +1,4 @@
-# Bucketlist
+# Shopping List
 
 A wishlist for Project Zomboid (Build 42.21 and later): put items on your character's list with a
 right-click, see what you carry and what you still need, and never leave the important stuff behind
@@ -6,11 +6,15 @@ while looting.
 
 Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3817246291
 
+Versions 1.0.x were published as "Bucketlist" (mod id `Bucketlist`). Since 1.1.0 the mod is called
+Shopping List with the mod id `ShoppingList`; a list saved by 1.0.x is taken over when the character
+is loaded. The Workshop page still shows 1.0.1 under the old name until its next update.
+
 ## Features
 
-- **Right-click** an item in the inventory, loot, hotbar or hand slots: "Add to Bucketlist", or
-  "Remove from Bucketlist" when it is listed already. Several selected item types at once work too.
-- **Bucketlist window** (sidebar button under the vanilla buttons, or the hotkey): icon, name,
+- **Right-click** an item in the inventory, loot, hotbar or hand slots: "Add to Shopping List", or
+  "Remove from Shopping List" when it is listed already. Several selected item types at once work too.
+- **Shopping List window** (sidebar button under the vanilla buttons, or the hotkey): icon, name,
   carried and wanted amount, sources and note per entry. Change the wanted amount, edit the note,
   delete entries (second click confirms), hide entries that are done. Right-click a row to open its
   recipe or remove a single source.
@@ -18,7 +22,7 @@ Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=381724629
   loot windows. The colour is set in the mod options.
 - **Tooltip**: listed items show carried and wanted amount, sources and note below the item tooltip.
 - **Crafting window**: right-click a single ingredient or tool to add it (or take it off again); the
-  button "Missing ingredients to Bucketlist" puts every missing input of the
+  button "Missing ingredients to Shopping List" puts every missing input of the
   selected recipe on the list, with the recipe as source. Inputs with alternatives become one entry
   that is fulfilled by any of them; tools are needed once, however many recipes use them.
 - **Sources**: every entry knows why it is on the list: right-click, recipe, or your manual change.
@@ -28,11 +32,11 @@ Steam Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=381724629
 
 ## Screenshots
 
-Taken in game 42.21.0. The mod ships English and German texts.
+Taken in game 42.21.0 with version 1.0.1, when the mod was still called Bucketlist.
 
 | | |
 |---|---|
-| ![Bucketlist window](docs/images/window.png) | The window: carried and wanted amount, sources and note per entry. Recipe inputs with alternatives are one entry ("One of"), done entries turn green. |
+| ![Shopping List window](docs/images/window.png) | The window: carried and wanted amount, sources and note per entry. Recipe inputs with alternatives are one entry ("One of"), done entries turn green. |
 | ![Loot window](docs/images/highlight-loot.png) | Listed items are framed in the loot window. |
 | ![Inventory](docs/images/highlight-inventory.png) | In the inventory too: nails are still missing (filled), the hammer is done (faint frame). |
 | ![Crafting window](docs/images/crafting.png) | Crafting window: the button adds everything missing, a right-click on a single ingredient adds or removes just that one. |
@@ -44,7 +48,7 @@ Taken in game 42.21.0. The mod ships English and German texts.
 | What | How |
 |---|---|
 | Add or remove an item | right-click the item |
-| Open or close the window | sidebar button, or the key K; rebind it in Options, Mods, Bucketlist |
+| Open or close the window | sidebar button, or the key K; rebind it in Options, Mods, Shopping List |
 | Close the window | X, ESC or the hotkey |
 | Change amount, edit note | buttons under the list, or right-click a row |
 | Missing recipe inputs | button in the crafting window and at workbenches |
@@ -52,8 +56,8 @@ Taken in game 42.21.0. The mod ships English and German texts.
 
 ## Multiplayer
 
-Bucketlist has no server code, but Project Zomboid only loads mods that the server lists. To use it
-in multiplayer, the server must have Bucketlist in `Mods=` (and its workshop id in `WorkshopItems=`),
+Shopping List has no server code, but Project Zomboid only loads mods that the server lists. To use it
+in multiplayer, the server must have `ShoppingList` in `Mods=` (and its workshop id in `WorkshopItems=`),
 and clients need the same version. The same applies to co-op hosting. The list is stored in the
 player's data and sent to the server after each change. Multiplayer has not been tested yet.
 
@@ -80,10 +84,10 @@ Corrections are very welcome:
 
 - in the Steam Workshop discussion "Translations" of the mod, or
 - as a GitHub issue or pull request with the files in
-  `mod/Bucketlist/common/media/lua/shared/Translate/<LANGUAGE>/` (same keys as `EN`; check them
+  `mod/ShoppingList/common/media/lua/shared/Translate/<LANGUAGE>/` (same keys as `EN`; check them
   with `python3 -I tools/i18n_check.py`).
 
-Please name the language, the text key (for example `IGUI_Bucketlist_HideDone`) and your proposal.
+Please name the language, the text key (for example `IGUI_ShoppingList_HideDone`) and your proposal.
 
 ## Development
 
@@ -95,10 +99,10 @@ Please name the language, the text key (for example `IGUI_Bucketlist_HideDone`) 
   installed game.
 - `tools/start-game.sh --test all`: starts the game in a separate user folder with the dev helper
   mod and runs the in-game tests.
-- `tools/build-workshop.sh`: assembles the workshop upload folder in `workshop/Bucketlist/`.
+- `tools/build-workshop.sh`: assembles the workshop upload folder in `workshop/ShoppingList/`.
 
 
-The dev helper mod `mod/BucketlistDev` is only for these tests and is not part of the workshop
+The dev helper mod `mod/ShoppingListDev` is only for these tests and is not part of the workshop
 upload. Design decisions are in `docs/DECISIONS.md`; `docs/API.md` lists every game function,
 class and event the mod uses, each with file and line in the installed game.
 

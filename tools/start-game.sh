@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Starts Project Zomboid for a Bucketlist test run: debug mode, own user folder
+# Starts Project Zomboid for a ShoppingList test run: debug mode, own user folder
 # (.cache/zomboid, so the normal ~/Zomboid with its saves and mod list stays
-# untouched), only Bucketlist and BucketlistDev active.
+# untouched), only ShoppingList and ShoppingListDev active.
 #
 #   tools/start-game.sh                 straight into a fresh test world
 #   tools/start-game.sh --continue      straight into the latest test save
@@ -14,10 +14,10 @@
 #   tools/start-game.sh --test persist  latest test save (of an "all" run), then the
 #                                       persistence checks
 #   tools/start-game.sh --menu           main menu only, no test world
-#   tools/start-game.sh --log           follow the Bucketlist lines of the running game
+#   tools/start-game.sh --log           follow the ShoppingList lines of the running game
 #   tools/start-game.sh --stop          end the dev game (and its headless display)
 #
-# Results are the "[BucketlistTest]" lines in .cache/zomboid/console.txt, each
+# Results are the "[ShoppingListTest]" lines in .cache/zomboid/console.txt, each
 # run ending in "DONE n/m".
 #
 # The author plays Project Zomboid on the same machine. The script refuses to start
@@ -71,11 +71,11 @@ case "${1:-}" in
         exit 0 ;;
     "") ;;
     --log)
-        exec tail -n +1 -F "$DEV/console.txt" | grep --line-buffered -E 'Bucketlist|STACK TRACE|attempted index|KahluaException' ;;
+        exec tail -n +1 -F "$DEV/console.txt" | grep --line-buffered -E 'ShoppingList|STACK TRACE|attempted index|KahluaException' ;;
     --test)
         MODE=test
         TEST_NAME="${2:-}"
-        # Same list as Cases.NAMES in BucketlistDev/TestCases.lua.
+        # Same list as Cases.NAMES in ShoppingListDev/TestCases.lua.
         case "$TEST_NAME" in
             context|window|highlight|craft|tour|options|all) ;;
             persist)
@@ -119,8 +119,8 @@ python3 -I "$REPO/tools/i18n_check.py" >/dev/null || {
 }
 
 mkdir -p "$DEV/mods"
-ln -sfn "$REPO/mod/Bucketlist" "$DEV/mods/Bucketlist"
-ln -sfn "$REPO/mod/BucketlistDev" "$DEV/mods/BucketlistDev"
+ln -sfn "$REPO/mod/ShoppingList" "$DEV/mods/ShoppingList"
+ln -sfn "$REPO/mod/ShoppingListDev" "$DEV/mods/ShoppingListDev"
 
 # Without this marker the game empties default.txt on start (B42 mod reset).
 echo "If this file does not exist, default.txt will be reset to empty (no mods active)." \
@@ -131,8 +131,8 @@ VERSION = 1,
 
 mods
 {
-    mod = Bucketlist,
-    mod = BucketlistDev,
+    mod = ShoppingList,
+    mod = ShoppingListDev,
 }
 
 maps
@@ -153,9 +153,9 @@ if [[ -f "$DEV/options.ini" ]]; then
     fi
 fi
 
-# A fresh world comes from the force-launched BucketlistDev scenario, which
+# A fresh world comes from the force-launched ShoppingListDev scenario, which
 # turns the option off after launching; continuing comes from a request file
-# that BucketlistDev/Continue.lua reads and clears on the main menu.
+# that ShoppingListDev/Continue.lua reads and clears on the main menu.
 FORCE=false
 [[ "$MODE" == new || "$MODE" == test ]] && FORCE=true
 OPTS="$DEV/debug-options.ini"
@@ -167,11 +167,11 @@ else
 fi
 mkdir -p "$DEV/Lua"
 case "$MODE" in
-    continue) echo "continue" > "$DEV/Lua/BucketlistDev.txt" ;;
-    resume)   echo "resume $TEST_NAME" > "$DEV/Lua/BucketlistDev.txt" ;;
-    test)     echo "test $TEST_NAME" > "$DEV/Lua/BucketlistDev.txt" ;;
-    menu)     touch "$DEV/Lua/BucketlistDev.txt" ;;
-    *)        : > "$DEV/Lua/BucketlistDev.txt" ;;
+    continue) echo "continue" > "$DEV/Lua/ShoppingListDev.txt" ;;
+    resume)   echo "resume $TEST_NAME" > "$DEV/Lua/ShoppingListDev.txt" ;;
+    test)     echo "test $TEST_NAME" > "$DEV/Lua/ShoppingListDev.txt" ;;
+    menu)     touch "$DEV/Lua/ShoppingListDev.txt" ;;
+    *)        : > "$DEV/Lua/ShoppingListDev.txt" ;;
 esac
 
 if [[ "$HEADLESS" == 1 ]]; then
@@ -187,5 +187,5 @@ fi
 echo "Starting Project Zomboid ($MODE${TEST_NAME:+ $TEST_NAME}) with user folder $DEV"
 echo "Log: $DEV/console.txt (follow with: tools/start-game.sh --log)"
 if [[ -n "$TEST_NAME" ]]; then
-    echo "Test results: grep -F '[BucketlistTest]' \"$DEV/console.txt\""
+    echo "Test results: grep -F '[ShoppingListTest]' \"$DEV/console.txt\""
 fi

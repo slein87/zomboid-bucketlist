@@ -13,7 +13,7 @@ REPO=$(cd "$(dirname "$0")/.." && pwd)
 DEV="$REPO/.cache/zomboid"
 LOG="$DEV/console.txt"
 OUT="$REPO/.cache/langshots"
-TRANSLATE="$REPO/mod/Bucketlist/common/media/lua/shared/Translate"
+TRANSLATE="$REPO/mod/ShoppingList/common/media/lua/shared/Translate"
 
 if [[ $# -gt 0 ]]; then
     LANGS=("$@")
@@ -49,15 +49,15 @@ for code in "${LANGS[@]}"; do
         sleep 5
         [[ -f "$LOG" ]] || continue
         (( $(stat -c %Y "$LOG") > start )) || continue
-        if grep -q 'BucketlistTest\] DONE' "$LOG"; then
+        if grep -q 'ShoppingListTest\] DONE' "$LOG"; then
             result=$(grep -o 'DONE [0-9]*/[0-9]*' "$LOG" | tail -1)
             break
         fi
     done
     sleep 3
     mkdir -p "$OUT/$code"
-    find "$DEV/Screenshots" -name 'bucketlist-*.png' -newermt "@$start" -exec cp {} "$OUT/$code/" \;
-    errors=$(grep -c '\[Bucketlist\] error' "$LOG" || true)
+    find "$DEV/Screenshots" -name 'shoppinglist-*.png' -newermt "@$start" -exec cp {} "$OUT/$code/" \;
+    errors=$(grep -c '\[ShoppingList\] error' "$LOG" || true)
     echo "$code: $result, $(ls "$OUT/$code" | wc -l) pictures, $errors errors in the log"
     "$REPO/tools/start-game.sh" --stop >/dev/null 2>&1 || true
     wait_gone || { echo "dev game did not end, stopping" >&2; exit 1; }

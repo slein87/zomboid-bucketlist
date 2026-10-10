@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Apri Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Apre e chiude la finestra della Shopping List.",
+    "UI_ShoppingList_Options_Color": "Colore di evidenziazione",
+    "UI_ShoppingList_Options_Color_Tooltip": "Colore della cornice attorno agli oggetti in lista nelle finestre di inventario e bottino."
+}

@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Відкрити Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Відкриває та закриває вікно Shopping List.",
+    "UI_ShoppingList_Options_Color": "Колір підсвічування",
+    "UI_ShoppingList_Options_Color_Tooltip": "Колір рамки навколо предметів зі списку у вікнах інвентарю та здобичі."
+}

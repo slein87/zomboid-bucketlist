@@ -8,7 +8,7 @@ local TESTS = {
 }
 
 local base = (arg and arg[0] or ""):match("^(.*)tests/run%.lua$") or ""
-package.path = base .. "mod/Bucketlist/common/media/lua/client/?.lua;" .. package.path
+package.path = base .. "mod/ShoppingList/common/media/lua/client/?.lua;" .. package.path
 
 local loadfile, pcall, print, tostring, exit = loadfile, pcall, print, tostring, os.exit
 -- Kept for T.readFile and T.listFiles only; the modules under test never see io.

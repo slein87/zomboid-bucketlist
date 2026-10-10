@@ -1,5 +1,5 @@
 -- Rules of the data model, docs/DECISIONS.md D4.
-local Model = require "Bucketlist/Model"
+local Model = require "ShoppingList/Model"
 
 local NOW = 1760000000
 
@@ -213,6 +213,32 @@ function cases.migrate_makes_new_list_from_nothing(T)
     T.eq(status, "new", "string")
     data, status = Model.migrate({ entries = {} })
     T.eq(status, "new", "no schema")
+end
+
+function cases.adopt_old_key_moves_the_list(T)
+    local list = Model.newList()
+    local modData = { Bucketlist = list }
+    T.ok(Model.adoptOldKey(modData, "ShoppingList", "Bucketlist"), "moved")
+    T.ok(modData.ShoppingList == list, "same table under the new key")
+    T.eq(modData.Bucketlist, nil, "old key cleared")
+    T.ok(not Model.adoptOldKey(modData, "ShoppingList", "Bucketlist"), "second call does nothing")
+end
+
+function cases.adopt_old_key_never_overwrites(T)
+    local old, current = Model.newList(), Model.newList()
+    local modData = { Bucketlist = old, ShoppingList = current }
+    T.ok(not Model.adoptOldKey(modData, "ShoppingList", "Bucketlist"), "current list wins")
+    T.ok(modData.ShoppingList == current, "current list kept")
+    T.ok(modData.Bucketlist == old, "old list left alone")
+end
+
+function cases.adopt_old_key_ignores_nothing_and_garbage(T)
+    local modData = {}
+    T.ok(not Model.adoptOldKey(modData, "ShoppingList", "Bucketlist"), "nothing stored")
+    T.eq(modData.ShoppingList, nil, "nothing created")
+    modData = { Bucketlist = "garbage" }
+    T.ok(not Model.adoptOldKey(modData, "ShoppingList", "Bucketlist"), "old value is no table")
+    T.eq(modData.ShoppingList, nil, "garbage not taken over")
 end
 
 function cases.migrate_keeps_current_data(T)

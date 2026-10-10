@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Открыть Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Открывает и закрывает окно Shopping List.",
+    "UI_ShoppingList_Options_Color": "Цвет выделения",
+    "UI_ShoppingList_Options_Color_Tooltip": "Цвет рамки вокруг предметов из списка в окнах инвентаря и добычи."
+}

@@ -1,6 +1,6 @@
 -- Craft input helpers and group entries.
-local Model = require "Bucketlist/Model"
-local Inputs = require "Bucketlist/Inputs"
+local Model = require "ShoppingList/Model"
+local Inputs = require "ShoppingList/Inputs"
 
 local NOW = 1760000000
 

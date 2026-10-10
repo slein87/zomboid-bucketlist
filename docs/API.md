@@ -1,6 +1,6 @@
 # Verified game APIs
 
-Every game function, event and class that Bucketlist uses or plans to use in a later phase is listed
+Every game function, event and class that Shopping List uses or plans to use in a later phase is listed
 here with its location in the installed version 42.21.0. `python3 -I tools/apicheck.py` checks every
 row against the game and the jar dump (`.cache/jardump`, created with `python3 -I tools/pzjar.py`).
 After each game patch, run this check first.
@@ -25,7 +25,7 @@ game test still has to show the effect.
 | `Events.OnCreatePlayer` | `media/lua/client/ISUI/PlayerData/ISPlayerData.lua:203` | `(playerNum, player)` | Client | Create or migrate the list per player | verified |
 | `Events.OnPlayerDeath` | `media/lua/client/ISUI/PlayerData/ISPlayerData.lua:204` | `(player)` | Client | Drop the player's caches | verified |
 | `Events.OnPostSave` | `media/lua/client/ISUI/PlayerData/ISPlayerData.lua:205` | `()` | Client | Clean up windows, fires twice | verified |
-| `print` | `media/lua/client/ISUI/PlayerData/ISPlayerData.lua:162` | `print(text)` | Client | Log lines with `[Bucketlist]` | verified |
+| `print` | `media/lua/client/ISUI/PlayerData/ISPlayerData.lua:162` | `print(text)` | Client | Log lines with `[ShoppingList]` | verified |
 | `getCore():getVersion()` | `media/lua/client/ISUI/ISVersionWaterMark.lua:80` `jar zombie.core.Core` | `String getVersion()` | Client | Exact game version in the log | verified |
 | `getCore():getDebug()` | `media/lua/client/Context/Inventory/InvContextMedia.lua:11` | `getDebug() -> boolean` | Client | Verbose logs in debug mode only | verified |
 | `isClient` | `media/lua/client/Hotbar/ISHotbar.lua:675` | `isClient() -> boolean` | Client | Send ModData in MP only | verified |
@@ -34,7 +34,7 @@ game test still has to show the effect.
 
 | Name | Location | Signature | Side | Use | Status |
 |---|---|---|---|---|---|
-| `Events.OnFillInventoryObjectContextMenu` | `media/lua/client/ISUI/ISInventoryPaneContextMenu.lua:935` | `(playerNum, context, items)` | Client | Option "Add to Bucketlist" / "Remove from Bucketlist" | verified |
+| `Events.OnFillInventoryObjectContextMenu` | `media/lua/client/ISUI/ISInventoryPaneContextMenu.lua:935` | `(playerNum, context, items)` | Client | Option "Add to Shopping List" / "Remove from Shopping List" | verified |
 | `ISInventoryPaneContextMenu.createMenu` | `media/lua/client/ISUI/ISInventoryPaneContextMenu.lua:26` | `createMenu(player, isInPlayerInventory, items, x, y, origin) -> context` | Client | Dev test builds the menu without a mouse click | verified |
 | `ISInventoryPane.getActualItems` | `media/lua/client/ISUI/ISInventoryPane.lua:912` | `getActualItems(items) -> {InventoryItem}` | Client | Unpack the stacks of the selection | verified |
 | `ISContextMenu:addOption` | `media/lua/client/ISUI/ISContextMenu.lua:873` | `addOption(name, target, onSelect, param1, ...) -> option` | Client | Create an option; a click calls `onSelect(target, param1, ...)` | verified |
@@ -60,7 +60,7 @@ game test still has to show the effect.
 
 | Name | Location | Signature | Side | Use | Status |
 |---|---|---|---|---|---|
-| `IsoObject:getModData` | `media/lua/client/Hotbar/ISHotbar.lua:670` | `getModData() -> KahluaTable` | Client | List under `modData.Bucketlist`, SP saves it with the character | verified |
+| `IsoObject:getModData` | `media/lua/client/Hotbar/ISHotbar.lua:670` | `getModData() -> KahluaTable` | Client | List under `modData.ShoppingList`, SP saves it with the character | verified |
 | `IsoObject:transmitModData` | `media/lua/client/Hotbar/ISHotbar.lua:676` `jar zombie.iso.IsoObject` | `void transmitModData()` | Client | Send a change to the server in MP | game test pending (MP) |
 | `getTimestamp` | `media/lua/client/ISUI/ISPostDeathUI.lua:74` | `getTimestamp() -> seconds since 1970` | Client | `addedAt` | verified |
 | `getFileWriter` | `media/lua/client/Entity/ISEntityUI.lua:687` | `getFileWriter(name, createIfNull, append)` | Client | Dev requests; plan B for an MP backup | verified |
@@ -72,7 +72,7 @@ game test still has to show the effect.
 |---|---|---|---|---|---|
 | `getText` | `media/lua/client/ISUI/ISInventoryPaneContextMenu.lua:927` | `getText(key, arg1, ...)`, `%1` to `%9` | Client | All visible texts; `getText(nil)` throws | verified |
 | `getTextOrNull` | `media/lua/client/Hotbar/ISHotbar.lua:43` | `getTextOrNull(key) -> String or nil` | Client | Optional texts | verified |
-| `ContextMenu_*` in `ContextMenu.json` | `media/lua/shared/Translate/EN/ContextMenu.json:2` | flat object, one prefix per file | Shared | `ContextMenu_Bucketlist_*` in `ContextMenu.json` and so on | verified |
+| `ContextMenu_*` in `ContextMenu.json` | `media/lua/shared/Translate/EN/ContextMenu.json:2` | flat object, one prefix per file | Shared | `ContextMenu_ShoppingList_*` in `ContextMenu.json` and so on | verified |
 | `Mod.json` with `name` and `description` | `WS 3579640010/mods/STA_PryOpen/common/media/lua/shared/Translate/DE/Mod.json:2` | `{"name": ..., "description": ...}` | Shared | Mod entry per language | verified |
 
 ## 6 Highlighting and tooltip (phase 3)
@@ -169,7 +169,7 @@ game test still has to show the effect.
 | `ISTextBox:setValidateFunction` | `media/lua/client/ISUI/ISTextBox.lua:111` | `setValidateFunction(target, func)`; `maxChars` line 178 | Client | OK only for a valid amount, note limited to 200 characters | verified |
 | `ISTextBox:onClick` | `media/lua/client/ISUI/ISTextBox.lua:127` | calls `onclick(target, button, p1..p4)` and closes | Client | Callback of the dialogs; dev test presses OK | verified |
 | `ISTextEntryBox:getText` | `media/lua/client/ISUI/ISTextEntryBox.lua:60` | `getText()`, `setText(str)` line 109 | Client | Read the input; dev test fills the field | verified |
-| `getTexture` | `media/lua/client/ISUI/ISCollapsableWindow.lua:382` | `getTexture(path) -> Texture` | Client | Own icons `media/ui/Bucketlist/Bucketlist_*.png` | verified |
+| `getTexture` | `media/lua/client/ISUI/ISCollapsableWindow.lua:382` | `getTexture(path) -> Texture` | Client | Own icons `media/ui/ShoppingList/ShoppingList_*.png` | verified |
 | `ISEquippedItem:addMouseOverToolTipItem` | `media/lua/client/ISUI/ISEquippedItem.lua:702` | `addMouseOverToolTipItem(object, text)`, entry in `mouseOverList` | Client | Tooltip on the sidebar button | verified |
 | `ISEquippedItem:shrinkWrap` | `media/lua/client/ISUI/ISEquippedItem.lua:972` | counts children with `Type == "ISButton"`; `getChildren` line 975 | Client | Resize the sidebar after adding the new button | verified |
 | `getPlayerData` | `media/lua/client/ISUI/ISEquippedItem.lua:1060` | `getPlayerData(playerNum).equipped` | Client | Dev test finds the button | verified |
@@ -179,7 +179,7 @@ game test still has to show the effect.
 
 | Name | Location | Signature | Side | Use | Status |
 |---|---|---|---|---|---|
-| `PZAPI.ModOptions:create` | `media/lua/client/PZAPI/ModOptions.lua:247` | `create(modOptionsID, name) -> options` | Client | Options page `Bucketlist`, create it only once | verified |
+| `PZAPI.ModOptions:create` | `media/lua/client/PZAPI/ModOptions.lua:247` | `create(modOptionsID, name) -> options` | Client | Options page `ShoppingList`, create it only once | verified |
 | `Options:addKeyBind` | `media/lua/client/PZAPI/ModOptions.lua:182` | `addKeyBind(id, name, key, tooltip)` | Client | Hotkey; pass the name already translated | verified |
 | `Options:addColorPicker` | `media/lua/client/PZAPI/ModOptions.lua:158` | `addColorPicker(id, name, r, g, b, a, tooltip)` | Client | Highlight color | verified |
 | `colorOption:getValue` | `media/lua/client/PZAPI/ModOptions.lua:167` | `getValue() -> { r, g, b, a }` (0 to 1) | Client | Highlight color, read fresh every time, never modified | verified |
@@ -256,9 +256,9 @@ offline. `string.gmatch` is reimplemented in `stdlib.lua:99` and hangs on patter
 the empty string, so all of our patterns consume at least one character. `tests/run.lua` removes
 the missing globals so that the offline tests cannot use them by accident.
 
-## 11 Dev mod BucketlistDev only
+## 11 Dev mod ShoppingListDev only
 
-Only the test helper `mod/BucketlistDev` uses these calls, never the mod itself.
+Only the test helper `mod/ShoppingListDev` uses these calls, never the mod itself.
 
 | Name | Location | Signature | Side | Use | Status |
 |---|---|---|---|---|---|

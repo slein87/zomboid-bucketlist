@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Shopping List'i Aç",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Shopping List penceresini açar ve kapatır.",
+    "UI_ShoppingList_Options_Color": "Vurgu rengi",
+    "UI_ShoppingList_Options_Color_Tooltip": "Envanter ve ganimet pencerelerinde listedeki eşyaların çevresindeki çerçevenin rengi."
+}

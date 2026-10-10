@@ -1,6 +1,6 @@
 -- Rows of the management window: order, filter, source parts, text helpers.
-local Model = require "Bucketlist/Model"
-local Rows = require "Bucketlist/Rows"
+local Model = require "ShoppingList/Model"
+local Rows = require "ShoppingList/Rows"
 
 local NOW = 1760000000
 

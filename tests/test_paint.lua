@@ -1,5 +1,5 @@
 -- Geometry of the inventory highlight.
-local Paint = require "Bucketlist/Paint"
+local Paint = require "ShoppingList/Paint"
 
 local cases = {}
 

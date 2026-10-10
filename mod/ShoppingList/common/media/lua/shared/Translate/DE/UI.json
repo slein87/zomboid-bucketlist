@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Shopping List öffnen",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Öffnet und schließt das Fenster der Shopping List.",
+    "UI_ShoppingList_Options_Color": "Farbe der Hervorhebung",
+    "UI_ShoppingList_Options_Color_Tooltip": "Farbe des Rahmens um gelistete Items in Inventar- und Beutefenster."
+}

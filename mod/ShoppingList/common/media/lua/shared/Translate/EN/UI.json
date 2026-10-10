@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Open Shopping List",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Opens and closes the Shopping List window.",
+    "UI_ShoppingList_Options_Color": "Highlight colour",
+    "UI_ShoppingList_Options_Color_Tooltip": "Colour of the frame around listed items in the inventory and loot windows."
+}

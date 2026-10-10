@@ -1,8 +1,0 @@
-name=Bucketlist
-id=Bucketlist
-description=A wishlist for items you do not want to leave behind while looting. Right-click an item to put it on the list of your character.
-poster=poster.png
-icon=icon.png
-category=features
-modversion=1.0.1
-versionMin=42.21

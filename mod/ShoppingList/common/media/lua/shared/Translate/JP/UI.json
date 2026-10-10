@@ -1,0 +1,7 @@
+{
+    "UI_ShoppingList_Options_Title": "Shopping List",
+    "UI_ShoppingList_Options_Hotkey": "Shopping Listを開く",
+    "UI_ShoppingList_Options_Hotkey_Tooltip": "Shopping Listウィンドウを開閉します。",
+    "UI_ShoppingList_Options_Color": "ハイライトの色",
+    "UI_ShoppingList_Options_Color_Tooltip": "インベントリと戦利品のウィンドウで、リストにあるアイテムを囲む枠の色です。"
+}
